@@ -6,10 +6,10 @@
 defaults:
   - override /mode: exp.yaml
   - override /trainer: default.yaml
-  - override /model: mnist_model.yaml
-  - override /datamodule: mnist_datamodule.yaml
-  - override /callbacks: default.yaml
-  - override /logger: null
+  - override /model: stylegan_model.yaml
+  - override /datamodule: stylegan_datamodule.yaml
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb.yaml
 
 # all parameters below will be merged with parameters from default configurations set above
 # this allows you to overwrite only specified parameters

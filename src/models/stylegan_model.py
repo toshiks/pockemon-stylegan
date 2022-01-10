@@ -23,7 +23,8 @@ class StyleGanModel(pl.LightningModule):
             g_reg_interval: int = 4,
             d_reg_interval: int = 16,
 
-            lr: float = 0.002
+            lr: float = 0.002,
+            batch: int = 16
     ):
         super().__init__()
 

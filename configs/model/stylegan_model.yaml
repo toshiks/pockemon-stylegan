@@ -1,0 +1,11 @@
+_target_: src.models.stylegan_model.StyleGanModel
+
+image_size: 128
+latent: 512
+n_mlp: 8
+
+g_reg_interval: 4
+d_reg_interval: 16
+
+lr: 0.002
+batch: 16
