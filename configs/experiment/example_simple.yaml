@@ -22,15 +22,5 @@ seed: 12345
 
 trainer:
   min_epochs: 1
-  max_epochs: 10
-  gradient_clip_val: 0.5
+  max_epochs: 2
 
-model:
-  lin1_size: 128
-  lin2_size: 256
-  lin3_size: 64
-  lr: 0.002
-
-datamodule:
-  batch_size: 64
-  train_val_test_split: [55_000, 5_000, 10_000]
