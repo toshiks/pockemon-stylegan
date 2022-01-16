@@ -15,13 +15,12 @@ Stylegan2-ada approach based on pytorch lightning. [Original code](https://githu
 
 With this approach you can train network to generate pokemons. For that you should download [pokemon dataset](https://www.kaggle.com/kvpratama/pokemon-images-dataset).  
 
-<p align="center">
-
+<center>
 <img alt="Example" src="static/example.png" width="521" height="521">
-
+</center>
+<center>
 <em>Generation example. The training took approximately 18 hours.</em>
-
-</p>
+</center>
 
 ## Dependencies
 
