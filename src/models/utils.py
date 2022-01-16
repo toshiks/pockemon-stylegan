@@ -4,7 +4,7 @@ import random
 import torch
 import torch.nn as nn
 
-from .modules.stylegan.op import conv2d_gradfix
+from src.models.modules.stylegan.op import conv2d_gradfix
 
 
 def g_path_regularize(fake_img, latents, mean_path_length, decay=0.01):

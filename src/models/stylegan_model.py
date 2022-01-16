@@ -2,15 +2,12 @@ from collections import OrderedDict
 from typing import Any
 
 import pytorch_lightning as pl
-import torch
-import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-import torchvision
 
-import src.models.utils as utils
 import src.models.adaptive_augment as aa
-from .modules.stylegan import Discriminator, Generator
+import src.models.utils as utils
+from src.models.modules.stylegan import Discriminator, Generator
 
 
 class StyleGanModel(pl.LightningModule):
@@ -106,24 +103,24 @@ class StyleGanModel(pl.LightningModule):
         return loss
 
     def training_step(self, batch, batch_idx, optimizer_idx):
-        imgs, _ = batch
-
         if optimizer_idx == 0:
             g_loss = self.train_generator(batch)
             tqdm_dict = {"g_loss": g_loss}
             output = OrderedDict({"loss": g_loss, "progress_bar": tqdm_dict, "log": tqdm_dict})
+            self.log("generator_loss", g_loss)
             return output
         else:
             d_loss = self.train_discriminator(batch)
             tqdm_dict = {"d_loss": d_loss}
             output = OrderedDict({"loss": d_loss, "progress_bar": tqdm_dict, "log": tqdm_dict})
+            self.log("discriminator_loss", d_loss)
             return output
 
     def configure_optimizers(self):
         g_reg_ratio = self.hparams.g_reg_interval / (self.hparams.g_reg_interval + 1)
         d_reg_ratio = self.hparams.d_reg_interval / (self.hparams.d_reg_interval + 1)
 
-        g_optim = optim.AdamW(
+        g_optim = optim.Adam(
             params=self.generator.parameters(),
             lr=self.hparams.lr * g_reg_ratio,
             betas=(0, 0.99 ** g_reg_ratio)

@@ -133,7 +133,7 @@ class LogImagePredictions(Callback):
 
     def on_epoch_end(self, trainer, pl_module):
         if self.ready:
-            z = self.validation_z.type_as(pl_module.generator_ema.model[0].weight)
+            z = self.validation_z.type_as(pl_module.generator_ema.to_rgb1.bias.data)
             pl_module.generator_ema.eval()
             with torch.no_grad():
                 sample, _ = pl_module.generator_ema([z])

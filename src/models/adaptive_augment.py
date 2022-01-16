@@ -5,7 +5,7 @@ from torch import autograd
 from torch import distributed as dist
 from torch.nn import functional as F
 
-from .modules.stylegan.op import upfirdn2d
+from src.models.modules.stylegan.op import upfirdn2d
 
 
 def reduce_sum(tensor):
@@ -34,7 +34,7 @@ class AdaptiveAugment:
 
     @torch.no_grad()
     def tune(self, real_pred):
-        self.ada_aug_buf.to(real_pred.device)
+        self.ada_aug_buf = self.ada_aug_buf.to(real_pred.device)
 
         self.ada_aug_buf += torch.tensor(
             (torch.sign(real_pred).sum().item(), real_pred.shape[0]),

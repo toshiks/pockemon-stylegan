@@ -10,7 +10,7 @@ class MultiResolutionDataset(Dataset):
     def __init__(self, path, resolution=128):
         self.env = lmdb.open(
             path,
-            max_readers=32,
+            max_readers=400,
             readonly=True,
             lock=False,
             readahead=False,

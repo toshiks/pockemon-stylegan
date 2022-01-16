@@ -5,7 +5,7 @@
 
 defaults:
   - override /mode: exp.yaml
-  - override /trainer: default.yaml
+  - override /trainer: ddp.yaml
   - override /model: stylegan_model.yaml
   - override /datamodule: stylegan_datamodule.yaml
   - override /callbacks: wandb.yaml
@@ -21,6 +21,7 @@ name: "example_simple"
 seed: 12345
 
 trainer:
-  min_epochs: 1
-  max_epochs: 2
+#  min_epochs: 1
+  max_epochs: 2900
+#  max_steps: 300000
 
