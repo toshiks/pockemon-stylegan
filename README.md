@@ -19,7 +19,7 @@ With this approach you can train network to generate pokemons. For that you shou
 
 <img alt="Example" src="static/example.png" width="521" height="521">
 
-Generation example. The training took approximately 18 hours.
+<em>Generation example. The training took approximately 18 hours.</em>
 
 </p>
 
